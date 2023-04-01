@@ -1,8 +1,28 @@
 import React from 'react'
+import { AppBar, Toolbar, Typography, IconButton, Box } from '@mui/material';
+import { LinkedIn, GitHub, Email } from "@mui/icons-material";
+
 
 const WazFoot = () => {
   return (
-    <div>WazFoot</div>
+    <AppBar position="fixed" color="primary" style={{top: 'auto', bottom: 0, justifyContent: 'space-between', width: "100%;"}}>
+      <Toolbar style={{width: "100%"}}>
+        <Typography variant="body1" color="inherit">
+          Wazman94's Blog App &copy; 2023
+        </Typography>
+        <Box style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center', flexGrow: 1}}>
+          <IconButton href="https://www.linkedin.com/shawazi">
+            <LinkedIn />
+          </IconButton>
+          <IconButton href="https://www.github.com/shawazi">
+            <GitHub />
+          </IconButton>
+          <IconButton href="https://www.gmail.com/">
+            <Email />
+          </IconButton>
+        </Box>
+      </Toolbar>
+    </AppBar>
   )
 }
 

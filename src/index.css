@@ -13,8 +13,10 @@ font-family: 'Lato', sans-serif; */
 }
 
 body {
+	width: 100vw;
+	height: 100vh;
 	font-family: "Anonymous Pro", monospace;
-  color: rgb(2, 206, 2);
+  	color: rgb(2, 206, 2);
 	background: rgb(1, 49, 87);
 	background: radial-gradient(
 		circle,
