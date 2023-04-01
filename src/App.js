@@ -1,7 +1,6 @@
-import WazNav from "./components/WazNav";
-import WazFoot from "./components/WazFoot";
 import { ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
+import Main from "./pages/Main";
 
 const theme = createTheme({
   palette: {
@@ -21,8 +20,7 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <WazNav />
-      <WazFoot />
+      <Main />
     </ThemeProvider>
   );
 }
