@@ -26,6 +26,14 @@ const Register = () => {
 		axios.post(regURL, userInfo).then(response => {
 			toast.success("Account Created!");
 			console.log(response.data);
+			const { first_name, last_name, password } = userInfo;
+			axios.post("http://22112.fullstack.clarusway.com/account/token/", {username: `${first_name}.${last_name}`, password})
+				.then(response => {
+					console.log(response)
+				})
+				.catch(error => {
+					console.error("Error creating token: ", error.response.data)
+				})
 		}).catch(error => {
 			console.error('Error creating account: ', error.response.data)
 		});
@@ -59,7 +67,9 @@ const Register = () => {
 						return errors;
 					}}
 					onSubmit={(values, { setSubmitting }) => {
+						setSubmitting(true);
 						createAccount(values);
+						setSubmitting(false);
 					}}
 				>
 					{({ isSubmitting }) => (
