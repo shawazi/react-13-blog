@@ -16,6 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -189,6 +190,9 @@ export default function WazNav() {
               inputProps={{ 'aria-label': 'search' }} onChange={handleSearch}
             />
           </Search>
+          <Link className='navbar-link' to="/register">Register</Link>
+          <Link className='navbar-link' to="/login">Login</Link>
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
