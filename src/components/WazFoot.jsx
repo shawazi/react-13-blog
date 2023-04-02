@@ -5,8 +5,8 @@ import { LinkedIn, GitHub, Email } from "@mui/icons-material";
 
 const WazFoot = () => {
   return (
-    <AppBar position="fixed" color="primary" style={{top: 'auto', bottom: 0, justifyContent: 'space-between', width: "100%;"}}>
-      <Toolbar style={{width: "100%"}}>
+    <AppBar position="fixed" color="primary" style={{top: 'auto', bottom: 0, justifyContent: 'center', width: "100%", maxHeight: "30px"}}>
+      <Toolbar style={{maxHeight: "30px"}}>
         <Typography variant="body1" color="inherit">
           Wazman94's Blog App &copy; 2023
         </Typography>

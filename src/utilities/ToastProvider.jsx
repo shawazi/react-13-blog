@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -7,7 +7,7 @@ const ToastProvider = ({ children }) => {
   return (
     <>
         <ToastContainer
-        position="top-right"
+        position="bottom-right"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -17,6 +17,7 @@ const ToastProvider = ({ children }) => {
         draggable
         pauseOnHover
         theme="dark"
+        transition={Slide}
       />
       {children}
     </>

@@ -162,7 +162,7 @@ export default function WazNav() {
 
   return (
     <Box className="anon-class" sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{height: "50px", justifyContent: "center"}}>
         <Toolbar>
           <IconButton
             size="large"

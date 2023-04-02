@@ -16,13 +16,9 @@ export const AuthProvider = ({ children }) => {
         setLoggedIn(false);
     }
 
-    const createAccount = () => {
-
-        setLoggedIn(true);
-    }
 
     return (
-        <AuthContext.Provider value={{loggedIn, login, logout, createAccount}}>
+        <AuthContext.Provider value={{loggedIn, login, logout}}>
             {children}
         </AuthContext.Provider>
     )
