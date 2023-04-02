@@ -1,6 +1,5 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
-import ToastProvider from "./utilities/ToastProvider";
 import WazRouter from "./router/WazRouter";
 
 const theme = createTheme({
@@ -20,11 +19,9 @@ const theme = createTheme({
 
 function App() {
   return (
-    <ToastProvider>
-      <ThemeProvider theme={theme}>
-        <WazRouter />
-      </ThemeProvider>
-    </ToastProvider>
+    <ThemeProvider theme={theme}>
+      <WazRouter />
+    </ThemeProvider>
   );
 }
 

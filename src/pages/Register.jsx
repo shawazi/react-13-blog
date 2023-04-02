@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import WazNav from "../components/WazNav";
 import WazFoot from "../components/WazFoot";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Container } from "react-bootstrap";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Register = () => {
+	const { login, logout, loggedIn, setLoggedIn } = useContext(AuthContext);
+
 	return (
 		<>
 			<WazNav />
@@ -37,6 +40,7 @@ const Register = () => {
 							alert(JSON.stringify(values, null, 2));
 							setSubmitting(false);
 						}, 400);
+						login();
 					}}
 				>
 					{({ isSubmitting }) => (
