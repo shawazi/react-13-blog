@@ -192,6 +192,7 @@ export default function WazNav() {
           </Search>
           <Link className='navbar-link' to="/register">Register</Link>
           <Link className='navbar-link' to="/login">Login</Link>
+          <Link className='navbar-link' to="/">Home</Link>
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
