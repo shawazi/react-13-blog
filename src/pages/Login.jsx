@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <>
         <WazNav />
-        <div className='text-light'>Login</div>
+        <div className='text-light anon-class'>Login</div>
         <WazFoot />
     </>
   )

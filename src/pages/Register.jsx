@@ -8,7 +8,7 @@ const Register = () => {
 	return (
 		<>
 			<WazNav />
-			<Container>
+			<Container className="mt-5 anon-class">
 				<Formik
 					initialValues={{
 						first_name: "",
@@ -39,6 +39,8 @@ const Register = () => {
 				>
 					{({ isSubmitting }) => (
 						<Form className="d-flex flex-column w-25 mx-auto m-5 gap-3 text-light">
+							<h3 className="alkatra-class mx-auto">Registration Page</h3>
+
                             <label htmlFor="first_name">First Name</label>
 							<Field type="text" name="first_name" />
 							<ErrorMessage name="first_name" component="div" />

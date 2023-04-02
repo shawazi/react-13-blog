@@ -6,11 +6,18 @@ font-family: 'Delicious Handrawn', cursive;
 font-family: 'EB Garamond', serif;
 font-family: 'Lato', sans-serif; */
 
+.alkatra-class {
+	font-family: 'Alkatra', cursive;
+}
+
+.anon-class {
+	font-family: 'Anonymous Pro', monospace;
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Anonymous Pro", monospace;
 }
 
 body {
@@ -24,6 +31,7 @@ body {
 		rgba(1, 65, 87, 1) 59%,
 		rgba(35, 1, 87, 1) 90%
 	);
+	font-family: "Anonymous Pro", monospace;
 }
 
 .navbar-link {
