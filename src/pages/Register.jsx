@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 const Register = () => {
 	// const { login, logout, loggedIn, setLoggedIn } = useContext(AuthContext);
 
-	const regURL = "http://22112.fullstack.clarusway.com/account/register/"
+	const regURL = "http://22112.fullstack.clarusway.com/account/register/";
 
 	const createAccount = (values) => {
 		const userInfo = {
@@ -21,22 +21,38 @@ const Register = () => {
 			password2: values.password2,
 		};
 
-		console.log(userInfo)
+		console.log(userInfo);
 
-		axios.post(regURL, userInfo).then(response => {
-			toast.success("Account Created!");
-			console.log(response.data);
-			const { first_name, last_name, password } = userInfo;
-			axios.post("http://22112.fullstack.clarusway.com/account/token/", {username: `${first_name}.${last_name}`, password})
-				.then(response => {
-					console.log(response)
-				})
-				.catch(error => {
-					console.error("Error creating token: ", error.response.data)
-				})
-		}).catch(error => {
-			console.error('Error creating account: ', error.response.data)
-		});
+		axios
+			.post(regURL, userInfo)
+			.then((response) => {
+				toast.success("Account Created!");
+				console.log(response.data);
+				const { email, password } = userInfo;
+				const username = userInfo.first_name + "." + userInfo.last_name;
+				const loginInfo = { username, email, password };
+				axios
+					.post(
+						"http://22112.fullstack.clarusway.com/account/login/",
+						loginInfo
+					)
+					.then((response) => {
+						console.log(response);
+						return axios.post(
+							"http://22112.fullstack.clarusway.com/account/token/",
+							loginInfo
+						);
+					})
+					.catch((error) => {
+						console.error(
+							"Error creating token: ",
+							error.response.data
+						);
+					});
+			})
+			.catch((error) => {
+				console.error("Error creating account: ", error.response.data);
+			});
 	};
 
 	return (
