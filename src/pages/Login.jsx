@@ -6,7 +6,7 @@ import { Form, Field, ErrorMessage, Formik } from "formik";
 import { Container } from "react-bootstrap";
 
 const Login = () => {
-  const { login } = useContext(AuthContext) 
+  const { login, loggedIn, logout } = useContext(AuthContext) 
 
 	return (
 		<>
@@ -47,7 +47,7 @@ const Login = () => {
 							</h3>
 
 							<label htmlFor="email">Email</label>
-							<Field type="email" name="email" />
+							<Field type="email" name="email" autoComplete="off" />
 							<ErrorMessage
 								className="text-danger"
 								name="email"
@@ -55,20 +55,30 @@ const Login = () => {
 							/>
 
 							<label htmlFor="password">Password</label>
-							<Field type="password" name="password" />
+							<Field type="password" name="password" autoComplete="off" />
 							<ErrorMessage
 								className="text-danger"
 								name="password"
 								component="div"
 							/>
-
+            {!loggedIn ? 
 							<button
 								className="rounded bg-dark text-light w-auto px-2 mx-auto mb-5 mt-3"
 								type="submit"
 								disabled={isSubmitting}
 							>
-								Submit
+								Log In
 							</button>
+              : 
+              <button
+								className="rounded bg-dark text-light w-auto px-2 mx-auto mb-5 mt-3"
+								type="button"
+                onClick={logout}
+								disabled={isSubmitting}
+							>
+								Log Out
+            </button>
+            }
 						</Form>
 					)}
 				</Formik>

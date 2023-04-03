@@ -17,6 +17,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
+import { useContext } from 'react';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -157,6 +159,8 @@ export default function WazNav() {
     toast.info('Search received, parsing data...')
   }
 
+  const { loggedIn } = useContext(AuthContext);
+
   return (
     <Box className="anon-class" sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{maxWidth: '100%', height: "50px", justifyContent: "center"}}>
@@ -187,8 +191,12 @@ export default function WazNav() {
               inputProps={{ 'aria-label': 'search' }} onChange={handleSearch}
             />
           </Search>
+          {!loggedIn && 
+          <>
           <Link className='navbar-link' to="/register">Register</Link>
           <Link className='navbar-link' to="/login">Login</Link>
+          </> 
+          }
           <Link className='navbar-link' to="/">Home</Link>
 
           <Box sx={{ flexGrow: 1 }} />

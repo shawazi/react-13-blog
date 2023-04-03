@@ -8,7 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const Register = () => {
-	const { setLoggedIn, user, setUser } = useContext(AuthContext);
+	const { setLoggedIn, loggedIn, user, setUser } = useContext(AuthContext);
 
 	const regURL = "http://22112.fullstack.clarusway.com/account/register/";
 
@@ -72,6 +72,9 @@ const Register = () => {
 			})
 			.catch((error) => {
 				console.error("Error creating account: ", error.response.data);
+				if (error.response.data.email[0] === 'This field must be unique.') {
+					toast.error("This email address is already associated with a user account.")
+				}
 			});
 	};
 
