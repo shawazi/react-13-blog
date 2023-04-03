@@ -5,6 +5,12 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [loggedIn, setLoggedIn] = useState(false);
+    const [user, setUser] = useState({
+        currentUser: "",
+        accessToken: "",
+        refreshToken: "",
+        restToken: ""
+    });
 
     const login = () => {
         toast.success("Logged in.");
@@ -16,9 +22,17 @@ export const AuthProvider = ({ children }) => {
         setLoggedIn(false);
     }
 
+    const values = {
+        loggedIn,
+        setLoggedIn,
+        user,
+        setUser,
+        login,
+        logout
+    }
 
     return (
-        <AuthContext.Provider value={{loggedIn, login, logout}}>
+        <AuthContext.Provider value={values}>
             {children}
         </AuthContext.Provider>
     )

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import WazNav from "../components/WazNav";
 import WazFoot from "../components/WazFoot";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -8,7 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const Register = () => {
-	// const { login, logout, loggedIn, setLoggedIn } = useContext(AuthContext);
+	const { login, logout, loggedIn, setLoggedIn, user, setUser } = useContext(AuthContext);
 
 	const regURL = "http://22112.fullstack.clarusway.com/account/register/";
 
@@ -21,13 +21,17 @@ const Register = () => {
 			password2: values.password2,
 		};
 
-		console.log(userInfo);
+		// console.log(userInfo);
 
 		axios // account_register_create
 			.post(regURL, userInfo)
 			.then((response) => {
 				toast.success("Account Created!");
-				console.log(response.data);
+				// console.log(response);
+				setUser(user => ({
+					...user, 
+					currentUser: response.data.user.email
+				}))
 				const { email, password } = userInfo;
 				const username = userInfo.email;
 				const loginInfo = { username, email, password };
@@ -38,6 +42,10 @@ const Register = () => {
 					)
 					.then((response) => {
 						console.log(response);
+						setUser(user => ({
+							...user, 
+							restToken: response.data.key
+						}))
 						const tokenInfo = { username, password };
 						return axios.post(  // account_token_create
 							"http://22112.fullstack.clarusway.com/account/token/",
@@ -45,7 +53,13 @@ const Register = () => {
 						);
 					})
 					.then((response) => {
-						console.log(response);
+						// console.log(response);
+						setUser(user => ({
+							...user,
+							accessToken: response.data.access,
+							refreshToken: response.data.refresh,
+						}))
+						// console.log(user);
 					})
 					.catch((error) => {
 						console.error(
@@ -58,6 +72,10 @@ const Register = () => {
 				console.error("Error creating account: ", error.response.data);
 			});
 	};
+
+	useEffect(() => {
+		console.log(user)
+	}, [user]);
 
 	return (
 		<>
