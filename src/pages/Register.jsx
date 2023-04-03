@@ -23,25 +23,29 @@ const Register = () => {
 
 		console.log(userInfo);
 
-		axios
+		axios // account_register_create
 			.post(regURL, userInfo)
 			.then((response) => {
 				toast.success("Account Created!");
 				console.log(response.data);
 				const { email, password } = userInfo;
-				const username = userInfo.first_name + "." + userInfo.last_name;
+				const username = userInfo.email;
 				const loginInfo = { username, email, password };
-				axios
+				axios // account_login_create
 					.post(
 						"http://22112.fullstack.clarusway.com/account/login/",
 						loginInfo
 					)
 					.then((response) => {
 						console.log(response);
-						return axios.post(
+						const tokenInfo = { username, password };
+						return axios.post(  // account_token_create
 							"http://22112.fullstack.clarusway.com/account/token/",
-							loginInfo
+							tokenInfo
 						);
+					})
+					.then((response) => {
+						console.log(response);
 					})
 					.catch((error) => {
 						console.error(
