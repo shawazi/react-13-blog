@@ -20,6 +20,10 @@ export const AuthProvider = ({ children }) => {
 				values
 			);
 			console.log(currentUserToken);
+            // setUser({
+            //     ...user,
+            //     currentUser: values.email
+            // })
 			toast.success("Logged in.");
 			setLoggedIn(true);
 		} catch (error) {
