@@ -8,7 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const Register = () => {
-	const { login, logout, loggedIn, setLoggedIn, user, setUser } = useContext(AuthContext);
+	const { setLoggedIn, user, setUser } = useContext(AuthContext);
 
 	const regURL = "http://22112.fullstack.clarusway.com/account/register/";
 
@@ -60,7 +60,9 @@ const Register = () => {
 							refreshToken: response.data.refresh,
 						}))
 						// console.log(user);
+						setLoggedIn(true);
 					})
+					// .then(resetForm())
 					.catch((error) => {
 						console.error(
 							"Error creating token: ",
@@ -113,7 +115,7 @@ const Register = () => {
 					{({ isSubmitting }) => (
 						<Form className="d-flex flex-column w-25 mx-auto gap-2 text-light">
 							<h3 className="alkatra-class mx-auto">
-								Registration Page
+								Account Registration
 							</h3>
 
 							<label htmlFor="first_name">First Name</label>

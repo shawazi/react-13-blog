@@ -52,9 +52,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
   },
 }));
 
@@ -162,9 +159,9 @@ export default function WazNav() {
 
   return (
     <Box className="anon-class" sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{height: "50px", justifyContent: "center"}}>
+      <AppBar position="static" style={{maxWidth: '100%', height: "50px", justifyContent: "center"}}>
         <Toolbar>
-          <IconButton
+          <IconButton 
             size="large"
             edge="start"
             color="inherit"
