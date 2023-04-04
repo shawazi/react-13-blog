@@ -191,14 +191,17 @@ export default function WazNav() {
               inputProps={{ 'aria-label': 'search' }} onChange={handleSearch}
             />
           </Search>
-          {!loggedIn && 
+          {!loggedIn ?
           <>
-          <Link className='navbar-link' to="/register">Register</Link>
-          <Link className='navbar-link' to="/login">Login</Link>
+            <Link className='navbar-link' to="/register">Register</Link>
+            <Link className='navbar-link' to="/login">Login</Link>
           </> 
+          :
+          <>
+            <Link className='navbar-link' to="/">Home</Link>
+            <Link className='navbar-link' to="/login">Logout</Link>
+          </>
           }
-          <Link className='navbar-link' to="/">Home</Link>
-
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">

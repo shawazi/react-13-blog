@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
 	const login = async (values) => {
 		try {
 			const currentUserToken = await axios.post(
-				"http://22112.fullstack.clarusway.com/account/login/",
+				"https://22112.fullstack.clarusway.com/account/login/",
 				values
 			);
 			console.log(currentUserToken);
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
 
 	const logout = () => {
 		axios
-			.post("http://22112.fullstack.clarusway.com/account/logout/")
+			.post("https://22112.fullstack.clarusway.com/account/logout/")
             .then(() => {
                 toast.success("Logged out.");
                 setLoggedIn(false);

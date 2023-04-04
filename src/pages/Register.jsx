@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 const Register = () => {
 	const { setLoggedIn, loggedIn, user, setUser } = useContext(AuthContext);
 
-	const regURL = "http://22112.fullstack.clarusway.com/account/register/";
+	const regURL = "https://22112.fullstack.clarusway.com/account/register/";
 
 	const createAccount = (values) => {
 		const userInfo = {
@@ -37,7 +37,7 @@ const Register = () => {
 				const loginInfo = { username, email, password };
 				axios // account_login_create
 					.post(
-						"http://22112.fullstack.clarusway.com/account/login/",
+						"https://22112.fullstack.clarusway.com/account/login/",
 						loginInfo
 					)
 					.then((response) => {
@@ -48,7 +48,7 @@ const Register = () => {
 						}))
 						const tokenInfo = { username, password };
 						return axios.post(  // account_token_create
-							"http://22112.fullstack.clarusway.com/account/token/",
+							"https://22112.fullstack.clarusway.com/account/token/",
 							tokenInfo
 						);
 					})
