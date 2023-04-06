@@ -199,7 +199,7 @@ export default function WazNav() {
           :
           <>
             <Link className='navbar-link' to="/">Home</Link>
-            <Link className='navbar-link' to="/login">Logout</Link>
+            <button>Logout</button>
           </>
           }
           <Box sx={{ flexGrow: 1 }} />
